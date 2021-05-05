@@ -12,7 +12,7 @@ $conn = $database->select("users", "*",[
 ]);
 
 if($conn!=false) {
-    $_SESSION["email"] = $data[0]["email"];
+    $_SESSION["email"] = $conn[0]["email"];
     header("location: ../index.php");
 } else {
     header("location: login.php?error=wrong_credentials");

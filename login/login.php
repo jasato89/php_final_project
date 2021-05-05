@@ -20,7 +20,7 @@ require("connection.php");
         </div>
         <div>
             <label for="password">Password</label>
-            <input type="password">
+            <input type="password" name="password">
         </div>
         <div>
             <input type="submit" value="Login">
