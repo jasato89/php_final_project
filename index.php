@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 
     <title>Task Panel - Welcome</title>
 </head>
@@ -33,6 +34,7 @@
             echo            "<th>Descripción</th>";
             echo            "<th>Fecha Inicio</th>";
             echo            "<th>Fecha Fin</th>";
+            echo            "<th>Acciones</th>";
             echo            "<th>Ver Asignaturas</th>";
             echo        "</tr>";
             echo    "</thead>";
@@ -43,10 +45,17 @@
                 echo            "<td>" . $course["description"] . "</td>";
                 echo            "<td>" . $course["year_start"] . "</td>";
                 echo            "<td>" . $course["year_end"] . "</td>";
-                echo            "<td><a href=\"subjects.php?course=". $course["idcourses"] . "\">" . " Ver asignaturas</a></td>";
+                echo            "<td>
+                                        <a href=\"actions/edit_course.php?courseid=" . $course["idcourses"] . "\">
+                                        <i class=\"material-icons-outlined\">edit</i></a>
+                                        <a href=\"actions/delete_course.php?courseid=" . $course["idcourses"] . "\"><i class=\"material-icons-outlined\">delete</i></a>
+        </td>";
+                echo            "<td><a href=\"subjects.php?course=" . $course["idcourses"] . "\">" . " Ver asignaturas</a></td>";
             }
             echo    "</tbody>";
             echo   " </table>";
+        } else {
+            require("courses/add_course.php");
         }
     } else {
         header("Location: login/login.php");

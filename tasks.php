@@ -8,6 +8,8 @@
     <title>Tareas</title>
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
 </head>
 
 <body>
@@ -20,7 +22,7 @@
 
     if (isset($_SESSION["email"])) {
         $subject_id = $_GET["subject"];
-        echo "<h1  class=\"pt-12 mt-12\">" . "Tareas" . "</h1";
+        echo "<h1  class=\"pt-12 mt-12\">" . "Tareas" . "</h1>";
 
         if ($subject_id != null) {
 
@@ -68,6 +70,11 @@
             echo            "<td>" . $task["date_start"] . "</td>";
             echo            "<td>" . $task["date_end"] . "</td>";
             echo            "<td>" . $task["status"] . "</td>";
+            echo            "<td>
+            <a href=\"actions/edit_subjects.php?courseid=" . $task["idtasks"] . "\">
+            <i class=\"material-icons-outlined\">edit</i></a>
+            <a href=\"actions/delete_subjects.php?courseid=" . $task["idtasks"] . "\"><i class=\"material-icons-outlined\">delete</i></a>
+                    </td>";
             echo        "</tr>";
         }
         echo    "</tbody>";

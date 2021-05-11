@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     <title>Asignaturas</title>
 </head>
 
@@ -67,6 +68,11 @@
             echo           "<td>" . $subject["subject_name"] . "</td>";
             echo            "<td>" . $subject["n_hours"] . "</td>";
             echo            "<td>" . $subject["teacher"] . "</td>";
+            echo            "<td>
+                            <a href=\"actions/edit_subjects.php?courseid=" . $subject["idsubjects"] . "\">
+                            <i class=\"material-icons-outlined\">edit</i></a>
+                            <a href=\"actions/delete_subjects.php?courseid=" . $subject["idsubjects"] . "\"><i class=\"material-icons-outlined\">delete</i></a>
+                                            </td>";
             echo            "<td><a href=\"tasks.php?subject=". $subject["idsubjects"] . "\">" . " Ver tareas</a></td>";
 
             echo        "</tr>";
