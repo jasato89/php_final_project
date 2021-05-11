@@ -46,7 +46,7 @@
                 echo            "<td>" . $course["year_start"] . "</td>";
                 echo            "<td>" . $course["year_end"] . "</td>";
                 echo            "<td>
-                                        <a href=\"actions/edit_course.php?courseid=" . $course["idcourses"] . "\">
+                                        <a href=\"forms/edit_course.php?courseid=" . $course["idcourses"] . "\">
                                         <i class=\"material-icons-outlined\">edit</i></a>
                                         <a href=\"actions/delete_course.php?courseid=" . $course["idcourses"] . "\"><i class=\"material-icons-outlined\">delete</i></a>
         </td>";
@@ -55,12 +55,16 @@
             echo    "</tbody>";
             echo   " </table>";
         } else {
-            require("courses/add_course.php");
+            require("forms/add_course.php");
         }
     } else {
         header("Location: login/login.php");
     }
     ?>
+
+    <a href="forms/add_course.php">Añadir Curso</a>
+
+
 
 </body>
 
