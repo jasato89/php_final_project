@@ -69,9 +69,9 @@
             echo            "<td>" . $subject["n_hours"] . "</td>";
             echo            "<td>" . $subject["teacher"] . "</td>";
             echo            "<td>
-                            <a href=\"actions/edit_subjects.php?courseid=" . $subject["idsubjects"] . "\">
+                            <a href=\"actions/edit_subjects.php?subjectid=" . $subject["idsubjects"] . "\">
                             <i class=\"material-icons-outlined\">edit</i></a>
-                            <a href=\"actions/delete_subjects.php?courseid=" . $subject["idsubjects"] . "\"><i class=\"material-icons-outlined\">delete</i></a>
+                            <a href=\"actions/delete_subjects.php?subjectid=" . $subject["idsubjects"] . "\"><i class=\"material-icons-outlined\">delete</i></a>
                                             </td>";
             echo            "<td><a href=\"tasks.php?subject=". $subject["idsubjects"] . "\">" . " Ver tareas</a></td>";
 
