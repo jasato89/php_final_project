@@ -45,7 +45,7 @@
 
         <div class="flex flex-col">
             <label for="n_hours">Número de horas</label>
-            <input type="text" id="n_hours" name="n_hours" <?php echo $n_hours ?> required>
+            <input type="text" id="n_hours" name="n_hours" value="<?php echo $n_hours ?>" required>
         </div>
 
         <div>
