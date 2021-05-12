@@ -79,6 +79,8 @@
         }
         echo    "</tbody>";
         echo   " </table>";
+
+        echo '<a href="forms/add_subject.php">Añadir tarea</a>';
     }
 
     ?>

@@ -19,7 +19,7 @@
 
     ?>
 
-    <form action="actions/add_task.php" method="POST">
+    <form action="../actions/add_task.php" method="POST">
 
         <label for="task_name">Tarea</label>
         <input type="text" name="task_name" id="task_name">
