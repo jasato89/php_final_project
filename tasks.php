@@ -71,9 +71,9 @@
             echo            "<td>" . $task["date_end"] . "</td>";
             echo            "<td>" . $task["status"] . "</td>";
             echo            "<td>
-            <a href=\"actions/edit_subjects.php?courseid=" . $task["idtasks"] . "\">
+            <a href=\"forms/edit_subjects.php?taskid=" . $task["idtasks"] . "\">
             <i class=\"material-icons-outlined\">edit</i></a>
-            <a href=\"actions/delete_subjects.php?courseid=" . $task["idtasks"] . "\"><i class=\"material-icons-outlined\">delete</i></a>
+            <a href=\"actions/delete_subjects.php?taskid=" . $task["idtasks"] . "\"><i class=\"material-icons-outlined\">delete</i></a>
                     </td>";
             echo        "</tr>";
         }
