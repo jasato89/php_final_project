@@ -11,6 +11,7 @@
 <body>
 
     <?php
+    session_start();
     require("connection.php");
     $email = $_SESSION["email"];
     $subjects = $database->select("subjects", "*", [
@@ -18,22 +19,23 @@
     ]);
 
     ?>
-
     <form action="../actions/add_task.php" method="POST">
+
 
         <label for="task_name">Tarea</label>
         <input type="text" name="task_name" id="task_name">
 
-        <label for="subject"></label>
+        <label for="subject">Asignatura</label>
         <select name="subject" id="subject">
 
             <?php
-                foreach($subjects as $subject) {
-                    echo '<option value="' . $subject["idsubjects"]. '">'. $subject["subject_name"] .'</option>';
-                }
+            foreach ($subjects as $subject) {
+                echo '<option value="' . $subject["idsubjects"] . '">' . $subject["subject_name"] . '</option>';
+            }
             ?>
 
         </select>
+
 
         <label for="date_start">Fecha de inicio</label>
         <input type="date" name="date_start" id="date_start">

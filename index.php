@@ -27,30 +27,59 @@
         ]);
         if ($courses) {
             echo "<h3 class=\"mt-12 pt-12 bg-blue-200\">ESTE ES TU CURSO ACTUAL</h3>";
-            echo "<table class=\"highlight\">";
-            echo    "<thead>";
-            echo        "<tr>";
-            echo           "<th>Nombre Curso</th>";
-            echo            "<th>Descripción</th>";
-            echo            "<th>Fecha Inicio</th>";
-            echo            "<th>Fecha Fin</th>";
-            echo            "<th>Acciones</th>";
-            echo            "<th>Ver Asignaturas</th>";
+
+    ?>
+
+            <div class=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+                <?php
+
+                foreach ($courses as $course) {
+                ?>
+                    <div class="grid grid-cols-3">
+                        <div class="col-start-1 col-end-2">
+                            <h2><?php echo $course["course_name"]; ?></h2>
+                        </div>
+                        <div class="col-start-2 col-end-4 max-h-64 overflow-y-scroll">
+                            <p><?php echo $course["description"]; ?></p>
+                        </div>
+
+
+                    </div>
+
+                <?php
+                }
+                ?>
+
+
+            </div>
+
+    <?php
+
+            echo "<table class=\"mx-auto max-w-4xl w-full whitespace-wrap  rounded-lg bg-white divide-y divide-gray-300 overflow-hidden\">";
+            echo    "<thead class =\"bg-gray-50\">";
+            echo        "<tr class =\"text-gray-600 text-left\">";
+            echo           "<th class =\"font-semibold text-sm uppercase px-6 py-4\">Nombre Curso</th>";
+            echo            "<th class =\"font-semibold text-sm uppercase px-6 py-4\">Descripción</th>";
+            echo            "<th class =\"font-semibold text-sm uppercase px-6 py-4\">Fecha Inicio</th>";
+            echo            "<th class =\"font-semibold text-sm uppercase px-6 py-4\">Fecha Fin</th>";
+            echo            "<th class =\"font-semibold text-sm uppercase px-6 py-4\">Acciones</th>";
+            echo            "<th class =\"font-semibold text-sm uppercase px-6 py-4\">Ver Asignaturas</th>";
             echo        "</tr>";
             echo    "</thead>";
-            echo    "<tbody>";
+            echo    "<tbody class=\"divide-y divide-gray-200\">";
             foreach ($courses as $course) {
                 echo        "<tr>";
-                echo           "<td>" . $course["course_name"] . "</td>";
-                echo            "<td>" . $course["description"] . "</td>";
-                echo            "<td>" . $course["year_start"] . "</td>";
-                echo            "<td>" . $course["year_end"] . "</td>";
-                echo            "<td>
+                echo           "<td class=\"px-6 py-4 text-center font-semibold text-blue-900\">" . $course["course_name"] . "</td>";
+                echo            "<td><div class=\"text-center h-2 py-12 px-6 overflow-y-scroll\">" . $course["description"] . "</div></td>";
+                echo            "<td class=\"px-6 py-4 text-center\">" . $course["year_start"] . "</td>";
+                echo            "<td class=\"px-6 py-4 text-center\">" . $course["year_end"] . "</td>";
+                echo            "<td class=\"px-6 py-4 text-center\">
                                         <a href=\"forms/edit_course.php?courseid=" . $course["idcourses"] . "\">
                                         <i class=\"material-icons-outlined\">edit</i></a>
                                         <a href=\"actions/delete_course.php?courseid=" . $course["idcourses"] . "\"><i class=\"material-icons-outlined\">delete</i></a>
         </td>";
-                echo            "<td><a href=\"subjects.php?course=" . $course["idcourses"] . "\">" . " Ver asignaturas</a></td>";
+                echo            "<td class=\"px-6 py-4 text-center\"><a class=\"text-purple-800 hover:underline\" href=\"subjects.php?course=" . $course["idcourses"] . "\">" . " Ver asignaturas</a></td>";
             }
             echo    "</tbody>";
             echo   " </table>";
@@ -62,7 +91,9 @@
     }
     ?>
 
-    <a href="forms/add_course.php">Añadir Curso</a>
+    <div class="flex justify-center">
+        <a class="bg-green-500 p-2 m-2 rounded hover:bg-green-700 text-white" href="forms/add_course.php">Añadir Curso</a>
+    </div>
 
 
 

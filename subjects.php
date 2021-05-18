@@ -14,11 +14,11 @@
 <body>
     <?php
     include "connection.php";
-    include "menu.php";
     session_start();
-
+    
     if (isset($_SESSION["email"])) {
         $course_code = $_GET["course"];
+        require "menu.php";
 
 
         if ($course_code != null) {

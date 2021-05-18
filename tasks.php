@@ -17,10 +17,10 @@
     <?php
 
     include "connection.php";
-    include "menu.php";
     session_start();
-
+    
     if (isset($_SESSION["email"])) {
+        require "menu.php";
         $subject_id = $_GET["subject"];
         echo "<h1  class=\"pt-12 mt-12\">" . "Tareas" . "</h1>";
 

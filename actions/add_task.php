@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require("connection.php");
 $user = $_SESSION["email"];
 $task_name = $_POST["task_name"];
@@ -17,7 +17,9 @@ $database->insert("tasks", [
     "status" => $status,
     "description" => $description,
     "subject_id" => $subject_id,
-    "email" => $email
+    "email" => $user
 ]);
+
+header("Location: ../tasks.php");
 
 ?>
