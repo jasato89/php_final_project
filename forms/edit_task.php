@@ -29,7 +29,10 @@
 
     ?>
 
-    <form action="actions/add_task.php" method="POST">
+    <form action="../actions/edit_tasks.php" method="POST">
+
+    <input type="hidden" name="taskid" id="taskid" value="<?php echo $task_id?>">
+
 
         <label for="task_name">Tarea</label>
         <input type="text" name="task_name" value="<?php echo $task_name; ?>" id="task_name">
