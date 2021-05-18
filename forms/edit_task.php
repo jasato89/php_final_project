@@ -13,7 +13,7 @@
     <?php
     require("connection.php");
     $email = $_SESSION["email"];
-    $task_id = $_GET["task_id"];
+    $task_id = $_GET["taskid"];
 
     $task = $database->select("tasks", "*", [
         "idtasks" => $task_id
@@ -52,11 +52,12 @@
 
         </select>
 
+
         <label for="date_start">Fecha de inicio</label>
-        <input type="date" name="date_start" value="<?php echo $date_start; ?>" id="date_start">
+        <input type="date" name="date_start" value="<?php echo explode (" ", $date_start)[0]; ?>" id="date_start">
 
         <label for="date_end">Fecha de finalización</label>
-        <input type="date" name="date_end" value="<?php echo $date_end; ?>" id="date_end">
+        <input type="date" name="date_end" value="<?php echo explode(" ", $date_end)[0]; ?>" id="date_end">
 
         <label for="status">Status</label>
         <select name="status" id="status">

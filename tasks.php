@@ -69,11 +69,21 @@
             echo           "<td>" . $task["description"] . "</td>";
             echo            "<td>" . $task["date_start"] . "</td>";
             echo            "<td>" . $task["date_end"] . "</td>";
-            echo            "<td>" . $task["status"] . "</td>";
+
+            $showStatus = $task["status"];
+            if($showStatus == "started") {
+                $showStatus = "Iniciada";
+            } elseif($showStatus == "hold") {
+                $showStatus = "En Espera";
+            } else {
+                $showStatus = "Cerrada";
+            }
+
+            echo            "<td>" . $showStatus . "</td>";
             echo            "<td>
-            <a href=\"forms/edit_subjects.php?taskid=" . $task["idtasks"] . "\">
+            <a href=\"forms/edit_task.php?taskid=" . $task["idtasks"] . "\">
             <i class=\"material-icons-outlined\">edit</i></a>
-            <a href=\"actions/delete_subjects.php?taskid=" . $task["idtasks"] . "\"><i class=\"material-icons-outlined\">delete</i></a>
+            <a href=\"actions/delete_tasks.php?taskid=" . $task["idtasks"] . "\"><i class=\"material-icons-outlined\">delete</i></a>
                     </td>";
             echo        "</tr>";
         }
