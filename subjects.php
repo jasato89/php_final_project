@@ -57,8 +57,14 @@
                 printTable($subjects);
                 ?>
             </div>
-            <div class="flex justify-center">
-                <a class="bg-green-300 p-2 m-2 rounded hover:bg-green-400 text-gray-600" href="forms/add_subject.php">Añadir Asignatura</a>
+
+
+            <div class="fixed bottom-4 right-4 transform hover:scale-125">
+                <a href="forms/add_subject.php" class="font-bold text-gray-700 shadow-xl bg-green-600 border-2 border-gray-700 rounded-full bg-white flex items-center justify-center font-mono h-16 w-16">
+                    <div class="material-icons-outlined">
+                        add
+                    </div>
+                </a>
             </div>
         <?php
         }
@@ -74,8 +80,8 @@
 
         <?php foreach ($subjects as $subject) {
         ?>
-            <div>
-                <div class="grid grid-cols-1 p-2 border-8 shadow-xl border-black m-2 text-gray-700 bg-yellow-300">
+            <div class="border-8 shadow-xl border-black m-2 text-gray-700 bg-yellow-300 overflow-scroll">
+                <div class="grid grid-cols-1 p-2">
                     <p class="px-2 py-2 font-semibold text-center text-xl"><?php echo $subject["subject_name"] ?></p>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2">
@@ -110,9 +116,6 @@
     ?>
 
 
-    <!-- echo '<a href="forms/add_subject.php">Añadir tarea</a>';
-           <td><a href=\"tasks.php?subject=" . $subject["idsubjects"] . "\">" . " Ver tareas</a></td>
-           -->
 
 </body>
 

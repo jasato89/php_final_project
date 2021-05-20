@@ -18,84 +18,125 @@
 
     include "connection.php";
     session_start();
-    
+
     if (isset($_SESSION["email"])) {
-        require "menu.php";
+        echo "<div class=\"mb-16\">";
+        require("menu.php");
+        echo "</div>";
         $subject_id = $_GET["subject"];
-        echo "<h1  class=\"pt-12 mt-12\">" . "Tareas" . "</h1>";
+
 
         if ($subject_id != null) {
 
             $tasks = $database->select("tasks", "*", [
                 "subject_id" => $subject_id
             ]);
-            printTaskTableHeader();
+
+            $subject = $database->select("subjects", "*", [
+                "idsubjects" => $subject_id
+            ]);
+
+    ?>
+
+            <div class="p-10 bg-yellow-400 rounded flex flex-col items-center justify-center">
+                <h1 class="inline-block text-center bg-white m-2 p-2 text-2xl text-gray-600">Tareas de <?php echo $subject[0]["subject_name"]; ?></h1>
+            </div>
+
+        <?php
+
+            echo '<div class="my-4 mx-2 flex flex-1 flex-wrap justify-center">';
             printTaskTable($tasks);
+            echo '</div>';
         } else {
 
             $tasks = $database->select("tasks", "*", [
                 "email" => $_SESSION["email"]
             ]);
-            printTaskTableHeader();
+
+        ?>
+
+            <div class="p-10 bg-yellow-400 rounded flex flex-col items-center justify-center">
+                <h1 class="inline-block text-center bg-white m-2 p-2 text-2xl text-gray-600">Todas tus tareas</h1>
+            </div>
+
+        <?php
+
+            echo '<div class="my-4 mx-2 flex flex-1 flex-wrap justify-center">';
             printTaskTable($tasks);
+            echo '</div>';
         }
     } else {
         header("Location: login/login.php");
     }
 
-    function printTaskTableHeader()
-    {
-        echo "<table>";
-        echo    "<thead>";
-        echo        "<tr>";
-        echo           "<th>Tarea</th>";
-        echo           "<th>Descripción</th>";
-        echo            "<th>Fecha de Inicio</th>";
-        echo            "<th>Fecha Entrega</th>";
-        echo            "<th>Estado</th>";
-        echo            "<th>Asignatura</th>";
-        echo            "<th>Acciones</th>";
-        echo        "</tr>";
-        echo    "</thead>";
-        echo    "<tbody>";
-    }
 
     function printTaskTable($tasks)
     {
+
         foreach ($tasks as $task) {
+        ?>
+            <div class="border-8 shadow-xl border-black m-2 text-gray-700 bg-yellow-300">
+                <div class="w-auto grid grid-cols-1 p-2">
+                    <p class="px-2 py-2 font-semibold text-center text-xl"><?php echo $task["task_name"]; ?></p>
 
-            echo        "<tr>";
-            echo           "<td>" . $task["task_name"] . "</td>";
-            echo           "<td>" . $task["description"] . "</td>";
-            echo            "<td>" . $task["date_start"] . "</td>";
-            echo            "<td>" . $task["date_end"] . "</td>";
+                    <div class="grid grid-cols-1 sm:grid-cols-2 overflow-y-scroll">
+                        <h2 class="font-semibold text-sm px-2 py-2">Descripción</h2>
+                        <p class="block w-44 px-2 py-2 "><?php echo $task["description"]; ?></p>
+                    </div>
 
-            $showStatus = $task["status"];
-            if($showStatus == "started") {
-                $showStatus = "Iniciada";
-            } elseif($showStatus == "hold") {
-                $showStatus = "En Espera";
-            } else {
-                $showStatus = "Cerrada";
-            }
+                    <div class="grid grid-cols-1 sm:grid-cols-2">
+                        <h2 class="font-semibold text-sm  px-2 py-2">Fecha de inicio</h2>
+                        <p class="px-2 py-2 "><?php echo explode(" ", $task["date_start"])[0]; ?></p>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2">
+                        <h2 class="font-semibold text-sm  px-2 py-2">Fecha de finalización</h2>
+                        <p class="px-2 py-2 "><?php echo explode(" ", $task["date_end"])[0]; ?></p>
+                    </div>
+                    <?php
 
-            echo            "<td>" . $showStatus . "</td>";
-            echo            "<td>
-            <a href=\"forms/edit_task.php?taskid=" . $task["idtasks"] . "\">
-            <i class=\"material-icons-outlined\">edit</i></a>
-            <a href=\"actions/delete_tasks.php?taskid=" . $task["idtasks"] . "\"><i class=\"material-icons-outlined\">delete</i></a>
-                    </td>";
-            echo        "</tr>";
+                    $showStatus = $task["status"];
+                    if ($showStatus == "started") {
+                        $showStatus = "Iniciada";
+                    ?>
+                        <div class="flex items-center justify-center">
+                            <p class="px-4 py-2 bg-green-500 text-center rounded"><?php echo $showStatus; ?></p>
+                        </div>
+
+                    <?php
+                    } elseif ($showStatus == "hold") {
+                        $showStatus = "En Espera";
+                    ?>
+                        <div class="grid grid-cols-1 sm:grid-cols-2">
+                            <h2 class="font-semibold text-sm px-2 py-2">Estado</h2>
+                            <p class="px-2 py-2"><?php echo $showStatus; ?></p>
+                        </div>
+                    <?php
+                    } else {
+                        $showStatus = "Cerrada";
+                    ?>
+                        <div class="grid grid-cols-1 sm:grid-cols-2">
+                            <h2 class="font-semibold text-sm px-2 py-2">Estado</h2>
+                            <p class="px-2 py-2 "><?php echo $showStatus; ?></p>
+                        </div>
+                </div>
+            <?php
+                    }
+            ?>
+            </div>
+            </div>
+    <?php
         }
-        echo    "</tbody>";
-        echo   " </table>";
-
-        echo '<a href="forms/add_task.php">Añadir tarea</a>';
-
     }
-
-
     ?>
+
+    <div class="fixed bottom-4 right-4 transform hover:scale-125">
+        <a href="forms/add_task.php" class="font-bold text-gray-700 shadow-xl bg-green-600 border-2 border-gray-700 rounded-full bg-white flex items-center justify-center font-mono h-16 w-16">
+            <div class="material-icons-outlined">
+                add
+            </div>
+        </a>
+    </div>
+
 
 </body>
 

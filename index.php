@@ -30,8 +30,8 @@
     ?>
 
             <div class="p-10 bg-yellow-400 rounded flex flex-col items-center justify-center">
-                    <h1 class="inline-block text-center bg-white m-2 p-2 text-2xl text-gray-600">Bienvenido <?php echo $user?></h1>
-                    <h2 class="inline-block bg-white m-2 p-2 text-xl text-gray-600">Estos son tus cursos</h2>
+                <h1 class="inline-block text-center bg-white m-2 p-2 text-2xl text-gray-600">Bienvenido <?php echo $user ?></h1>
+                <h2 class="inline-block bg-white m-2 p-2 text-xl text-gray-600">Estos son tus cursos</h2>
             </div>
 
             <div class="my-4 mx-2 flex flex-1 flex-wrap justify-center">
@@ -49,7 +49,6 @@
                             <div class="grid grid-cols-1 sm:grid-cols-2">
                                 <h2 class="font-semibold text-sm  px-2 py-2">Fecha de inicio</h2>
                                 <p class="px-2 py-2 "><?php echo explode(" ", $course["year_start"])[0]; ?></p>
-
                             </div>
 
                             <div class="grid grid-cols-1 sm:grid-cols-2">
@@ -81,39 +80,7 @@
                 ?>
             </div>
 
-            <!--  <table class="mx-auto max-w-4xl w-full whitespace-wrap rounded-lg bg-white divide-y divide-gray-300 overflow-x-scroll">
-                <thead class="bg-gray-50">
-                    <tr class="text-gray-600 text-left">
-                        <th class="font-semibold text-sm uppercase px-6 py-4">Nombre Curso</th>
-                        <th class="font-semibold text-sm uppercase px-6 py-4\">Descripción</th>
-                        <th class="font-semibold text-sm uppercase px-6 py-4">Fecha Inicio</th>
-                        <th class="font-semibold text-sm uppercase px-6 py-4">Fecha Fin</th>
-                        <th class="font-semibold text-sm uppercase px-6 py-4">Acciones</th>
-                        <th class="font-semibold text-sm uppercase px-6 py-4">Ver Asignaturas</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-gray-200">
-                    <?php
-                    foreach ($courses as $course) {
-                    ?>
-                        <tr>
-                            <td class="px-6 py-4 text-center font-semibold text-blue-900"><?php echo $course["course_name"]; ?></td>
-                            <td>
-                                <div class="text-center h-2 py-12 px-6 overflow-y-scroll"> <?php echo $course["description"] ?></div>
-                            </td>
-                            <td class="px-6 py-4 text-center"> <?php echo $course["year_start"]; ?></td>
-                            <td class="px-6 py-4 text-center"> <?php echo $course["year_end"] ?></td>
-                            <td class="px-6 py-4 text-center">
-                                <a href=\forms/edit_course.php?courseid="<?php echo $course["idcourses"]; ?>">
-                                    <i class="material-icons-outlined">edit</i></a>
-                                <a href="actions/delete_course.php?courseid=<?php $course["idcourses"]; ?>"><i class="material-icons-outlined">delete</i></a>
-                            </td>
-                            <td class="px-6 py-4 text-center"><a class="text-purple-800 hover:underline" href="subjects.php?course=<?php echo $course["idcourses"]; ?>"> Ver asignaturas</a></td>
-                        <?php
-                    }
-                        ?>
-                </tbody>
-            </table> -->
+
     <?php
         } else {
             require("forms/add_course.php");
@@ -123,11 +90,13 @@
     }
     ?>
 
-    <div class="flex justify-center">
-        <a class="bg-green-300 p-2 m-2 rounded hover:bg-green-400 text-gray-600" href="forms/add_course.php">Añadir Curso</a>
+    <div class="fixed bottom-4 right-4 transform hover:scale-125">
+        <a href="forms/add_course.php" class="font-bold text-gray-700 shadow-xl bg-green-600 border-2 border-gray-700 rounded-full bg-white flex items-center justify-center font-mono h-16 w-16">
+            <div class="material-icons-outlined">
+                add
+            </div>
+        </a>
     </div>
-
-
 
 </body>
 
