@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-    <title>Task Panel - Login</title>
+    <title>Task Panel - Register</title>
 </head>
 <?php
 require("connection.php");
@@ -14,7 +14,7 @@ $error = $_GET["error"];
 if ($error == "wrong_credentials") {
 ?>
     <script>
-        alert("Usuario o contraseña errónea");
+        alert("No se ha podido crear el usuario");
     </script>
 <?php
 }
@@ -36,14 +36,12 @@ if ($error == "wrong_credentials") {
                         </p>
                     </div>
                     <div class="w-full md:max-w-md mt-6">
-                        <div class="card bg-white shadow-md rounded-lg px-4 py-4">
-                            <form method="POST" action="validate_login.php">
-                                <div class="flex flex-col items-center justify-center">
-                                    <h2 class="text-xl text-center font-semibold text-gray-700 mb-2">
-                                        Inicia Sesión
-                                    </h2>
-                                    <a class="text-xs mb-6  text-yellow-400 hover:text-yellow-500" href="register.php">¿Todavía no tienes cuenta?</a>
-                                </div>
+                        <div class="card bg-white shadow-md rounded-lg px-4 py-4 mb-6 ">
+                            <form method="POST" action="validate-register.php">
+
+                                <h2 class="text-xl text-center font-semibold text-gray-700 mb-2">
+                                    Regístrate
+                                </h2>
                                 <input name="email" pattern="[^[^@]+@[^@]+\.[^@]+$]+" required type="text" class="rounded px-4 w-full py-1 bg-gray-200  border border-gray-400 mb-6 text-gray-700 placeholder-gray-700 focus:bg-white focus:outline-none" placeholder="Correo">
                                 <input type="password" name="password" class="rounded px-4 w-full py-1 bg-gray-200  border border-gray-400 mb-4 text-gray-700 placeholder-gray-700 focus:bg-white focus:outline-none" placeholder="Contraseña">
                                 <div class="flex items-center justify-center">
