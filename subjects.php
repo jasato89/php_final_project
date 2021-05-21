@@ -108,9 +108,9 @@
                         <div class="grid grid-cols-1 sm:grid-cols-2">
                             <h2 class="font-semibold text-sm px-2 py-2">Acciones</h2>
                             <div class="flex flex-row px-2 py-2">
-                                <a href=forms/edit_subject.php?courseid=<?php echo $subject["idsubjects"]; ?>">
+                                <a href="forms/edit_subject.php?subjectid=<?php echo $subject["idsubjects"]; ?>">
                                     <i class="material-icons-outlined">edit</i></a>
-                                <a href="actions/delete_subject.php?courseid=<?php echo $subject["idsubjects"]; ?>">
+                                <a href="actions/delete_subject.php?subjectid=<?php echo $subject["idsubjects"]; ?>">
                                     <i class="material-icons-outlined">delete</i></a>
                             </div>
                         </div>

@@ -77,51 +77,77 @@
 
             foreach ($tasks as $task) {
             ?>
-                <div class="border-8 shadow-xl border-black m-2 text-gray-700 bg-yellow-300">
+                <div class="relative border-8 shadow-xl border-black m-2 text-gray-700 bg-yellow-300">
                     <div class="w-auto grid grid-cols-1 p-2">
-                        <p class="px-2 py-2 font-semibold text-center text-xl"><?php echo $task["task_name"]; ?></p>
+                        <div class="absolute top-0 right-0 flex flex-row">
+                            <a href="forms/edit_task.php?taskid=<?php echo $task["idtasks"]?>">
+                                <i class="bg-blue-400 hover:bg-blue-500 shadow-xl p-2 m-0 material-icons-outlined rounded-full m-2 mr-0">edit</i>
+                            </a>
+                            <a href="actions/delete_tasks.php?taskid=<?php echo $task["idtasks"]?>">
+                                <i class="bg-red-400 hover:bg-red-500 shadow-xl p-2 m-0 material-icons-outlined rounded-full m-2">delete</i>
+                            </a>
+                        </div>
+                        <p class="mt-8 px-2 py-2 font-semibold text-center text-xl"><?php echo $task["task_name"]; ?></p>
 
-                        <div class="grid grid-cols-1 sm:grid-cols-2">
-                            <h2 class="font-semibold text-sm px-2 py-2">Descripción</h2>
-                            <p class="block w-44 px-2 py-2 "><?php echo $task["description"]; ?></p>
-                        </div>
-
-                        <div class="grid grid-cols-1 sm:grid-cols-2">
-                            <h2 class="font-semibold text-sm  px-2 py-2">Fecha de inicio</h2>
-                            <p class="px-2 py-2 "><?php echo explode(" ", $task["date_start"])[0]; ?></p>
-                        </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2">
-                            <h2 class="font-semibold text-sm  px-2 py-2">Fecha de finalización</h2>
-                            <p class="px-2 py-2 "><?php echo explode(" ", $task["date_end"])[0]; ?></p>
-                        </div>
                         <?php
 
                         $showStatus = $task["status"];
                         if ($showStatus == "started") {
                             $showStatus = "Iniciada";
                         ?>
-                            <div class="flex items-center justify-center">
-                                <p class="px-4 py-2 bg-green-500 text-center rounded"><?php echo $showStatus; ?></p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2">
+                                <div class="flex flex-col align-middle">
+                                    <h2 class="my-auto font-semibold text-sm  px-2 py-2">Status</h2>
+                                </div>
+                                <div class="flex flex-col items-center justify-center">
+                                    <p class="px-4 py-1 bg-green-500 text-center rounded"><?php echo $showStatus; ?></p>
+                                </div>
                             </div>
 
                         <?php
                         } elseif ($showStatus == "hold") {
                             $showStatus = "En Espera";
                         ?>
-                               <div class="flex items-center justify-center">
-                                <p class="px-4 py-2 bg-blue-500 text-gray-300 text-center rounded"><?php echo $showStatus; ?></p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2">
+                                <div class="flex flex-col align-middle">
+                                    <h2 class="my-auto font-semibold text-sm  px-2 py-2">Status</h2>
+                                </div>
+                                <div class="flex flex-col items-center justify-center">
+                                    <p class="px-4 py-1 bg-blue-500 text-gray-300 text-center rounded"><?php echo $showStatus; ?></p>
+                                </div>
                             </div>
                         <?php
                         } else {
                             $showStatus = "Cerrada";
                         ?>
-                               <div class="flex items-center justify-center">
-                                <p class="px-4 py-2 bg-red-500 text-center rounded"><?php echo $showStatus; ?></p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2">
+                                <div class="flex flex-col align-middle">
+                                    <h2 class="my-auto font-semibold text-sm  px-2 py-2">Status</h2>
+                                </div>
+                                <div class="flex flex-col items-center justify-center">
+                                    <p class="px-4 py-1 bg-red-500 text-center rounded"><?php echo $showStatus; ?></p>
+                                </div>
                             </div>
                     </div>
                 <?php
                         }
                 ?>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2">
+                    <h2 class="font-semibold text-sm px-2 py-2">Descripción</h2>
+                    <p class="block w-44 px-2 py-2 "><?php echo $task["description"]; ?></p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2">
+                    <h2 class="font-semibold text-sm  px-2 py-2">Fecha de inicio</h2>
+                    <p class="px-2 py-2 "><?php echo explode(" ", $task["date_start"])[0]; ?></p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2">
+                    <h2 class="font-semibold text-sm  px-2 py-2">Fecha de finalización</h2>
+                    <p class="px-2 py-2 "><?php echo explode(" ", $task["date_end"])[0]; ?></p>
+                </div>
+
+
                 </div>
                 </div>
         <?php

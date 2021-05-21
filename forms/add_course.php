@@ -10,43 +10,42 @@
     <title>Añadir Curso</title>
 </head>
 
-<body>
-    <?php session_start() ?>
-    <form method="POST" action="../actions/add_course.php">
-        <div class="flex flex-col justify-center items-center p-5">
 
-                <div class="flex flex-col">
-                    <label for="course_name">Nombre del curso</label>
-                    <input type="text" id="course_name" name="course_name" required>
+<body class="h-screen" style="background-color: #6BBEE3;">
+    <header class="bg-repeat bg-cover border-t-2 border-blue-600 h-full" style="background-image: url('../resources/background.jpg');">
+
+        <?php session_start();
+        echo "<div class=\"mb-16\">";
+        require("menu.php");
+        echo "</div>";
+        ?>
+        <form class="flex items-center justify-center" method="POST" action="../actions/add_course.php">
+            <div class="w-full md:max-w-md mt-6">
+
+                <div class="flex flex-col p-5 bg-white shadow-2xl md:rounded-xl">
+                    <h2 class="text-xl text-center font-semibold text-gray-700 mb-2">
+                        Nuevo curso
+                    </h2>
+
+                        <input placeholder="Nombre del curso" class="rounded px-4 w-full py-1 bg-gray-200  border border-gray-400 mb-6 text-gray-700 placeholder-gray-700 focus:bg-white focus:outline-none" type="text" id="course_name" name="course_name" required>
+
+                        <textarea placeholder="Descripción" class="resize-y rounded px-4 w-full py-1 bg-gray-200  border border-gray-400 mb-6 text-gray-700 placeholder-gray-700 focus:bg-white focus:outline-none" type="text" id="description" name="description" required></textarea>
+
+                        <input placeholder="Centro" class="rounded px-4 w-full py-1 bg-gray-200  border border-gray-400 mb-6 text-gray-700 placeholder-gray-700 focus:bg-white focus:outline-none" type="text" id="center" name="center" required>
+
+                        <label class="mx-2 text-gray-700" for="date_end">Fecha final</label>
+                        <input placeholder="Fecha de inicio" class="rounded px-4 w-full py-1 bg-gray-200  border border-gray-400 mb-6 text-gray-700 placeholder-gray-700 focus:bg-white focus:outline-none" type="date" id="date_start" name="date_start" required>
+
+                        <label class="mx-2 text-gray-700" for="date_end">Fecha final</label>
+                        <input placeholder="Fecha fin" class="rounded px-4 w-full py-1 bg-gray-200  border border-gray-400 mb-6 text-gray-700 placeholder-gray-700 focus:bg-white focus:outline-none" type="date" id="date_end" name="date_end" required>
+
+                    <div class="flex items-center justify-center">
+                        <button class="bg-yellow-400 hover:bg-yellow-300 m-2 p-2 rounded text-gray-700" type="submit">Añadir curso</button>
+                    </div>
                 </div>
-
-                <div class="flex flex-col">
-                    <label for="description">Descripción</label>
-                    <input type="text" id="description" name="description" required>
-                </div>
-
-                <div class="flex flex-col">
-                    <label for="center">Centro</label>
-                    <input type="text" id="center" name="center" required>
-                </div>
-
-                <div class="flex flex-col">
-                    <label for="date_start">Fecha de inicio</label>
-                    <input type="date" id="date_start" name="date_start" required>
-                </div>
-
-                <div class="flex flex-col">
-                    <label for="date_end">Fecha final</label>
-                    <input type="date" id="date_end" name="date_end" required>
-                </div>
-
-            <div>
-                <button type="submit">Añadir curso</button>
             </div>
-        </div>
-
-    </form>
-
+        </form>
+    </header>
 </body>
 
 </html>

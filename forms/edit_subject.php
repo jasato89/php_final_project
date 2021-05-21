@@ -10,10 +10,13 @@
     <title>Editar Asignatura</title>
 </head>
 
-<body>
+<body class="h-screen" style="background-color: #6BBEE3;">
     <?php
     session_start();
     require("connection.php");
+    echo "<div class=\"mb-16\">";
+    require("menu.php");
+    echo "</div>";
 
     $subject_id = $_GET["subjectid"];
     $user = $_SESSION["email"];
@@ -31,49 +34,56 @@
     $course_id = $subject[0]["course_id"];
 
     ?>
+    <header class="bg-repeat bg-cover border-t-2 border-blue-600 h-full" style="background-image: url('../resources/background.jpg');">
 
-    <form action="../actions/edit_subject.php" method="POST">
-        <div class="flex flex-col">
-            <label for="subject_name">Asignatura</label>
-            <input type="text" id="subject_name" name="subject_name" value="<?php echo $name ?>" required>
-        </div>
+        <form class="flex items-center justify-center" action="../actions/edit_subject.php" method="POST">
 
-        <div class="flex flex-col">
-            <label for="teacher">Profesor</label>
-            <input type="text" id="teacher" name="teacher" value="<?php echo $teacher ?>" required>
-        </div>
+            <div class="w-full md:max-w-md mt-6">
 
-        <div class="flex flex-col">
-            <label for="n_hours">Número de horas</label>
-            <input type="text" id="n_hours" name="n_hours" value="<?php echo $n_hours ?>" required>
-        </div>
+                <div class="flex flex-col justify-center items-center p-5 bg-white shadow-2xl md:rounded-xl">
+                    <h2 class="text-xl text-center font-semibold text-gray-700 mb-2">
+                        Editar asignatura
+                    </h2>
 
-        <div>
-            <label for="course">Curso</label>
-            <select name="course" id="course">
+                    <div class="flex flex-col">
+                        <label for="subject_name">Asignatura</label>
+                        <input class="rounded px-4 w-full py-1 bg-gray-200  border border-gray-400 mb-6 text-gray-700 placeholder-gray-700 focus:bg-white focus:outline-none" type="text" id="subject_name" name="subject_name" value="<?php echo $name;?>" required>
+                    </div>
 
-                <?php
-                foreach ($courses as $course) {
+                    <div class="flex flex-col">
+                        <label for="teacher">Profesor</label>
+                        <input class="rounded px-4 w-full py-1 bg-gray-200  border border-gray-400 mb-6 text-gray-700 placeholder-gray-700 focus:bg-white focus:outline-none" type="text" id="teacher" name="teacher" value="<?php echo $teacher ?>" required>
+                    </div>
 
-                    if ($course["idcourses"] == $course_id) {
+                    <div class="flex flex-col">
+                        <label for="n_hours">Número de horas</label>
+                        <input class="rounded px-4 w-full py-1 bg-gray-200  border border-gray-400 mb-6 text-gray-700 placeholder-gray-700 focus:bg-white focus:outline-none" type="text" id="n_hours" name="n_hours" value="<?php echo $n_hours ?>" required>
+                    </div>
 
-                        echo '<option selected="selected" value="' . $course["idcourses"] . '">' . $course["course_name"] . '</option>';
-                    
-                    } else {
+                    <div>
+                        <label for="course">Curso</label>
+                        <select class="rounded px-4 w-full py-1 bg-gray-200  border border-gray-400 mb-6 text-gray-700 placeholder-gray-700 focus:bg-white focus:outline-none" name="course" id="course">
 
-                        echo '<option value="' . $course["idcourses"] . '">' . $course["course_name"] . '</option>';
-                    
-                    }
-                }
-                ?>
-            </select>
-        </div>
-        <div>
-            <button type="submit">Editar asignatura</button>
-        </div>
-        </div>
+                            <?php
+                            foreach ($courses as $course) {
 
-    </form>
+                                if ($course["idcourses"] == $course_id) {
+
+                                    echo '<option selected="selected" value="' . $course["idcourses"] . '">' . $course["course_name"] . '</option>';
+                                } else {
+
+                                    echo '<option value="' . $course["idcourses"] . '">' . $course["course_name"] . '</option>';
+                                }
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div>
+                        <button class="bg-yellow-400 hover:bg-yellow-300 m-2 p-2 rounded text-gray-700"  type="submit">Editar asignatura</button>
+                    </div>
+                </div>
+        </form>
+    </header>
 </body>
 
 </html>

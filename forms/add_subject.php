@@ -10,58 +10,65 @@
     <title>Añadir Curso</title>
 </head>
 
-<body>
+<body class="h-screen" style="background-color: #6BBEE3;">
+
     <?php session_start();
 
     require("connection.php");
+    echo "<div class=\"mb-16\">";
+    require("menu.php");
+    echo "</div>";
 
     $courses = $database->select("courses", "*", [
         "email" => $_SESSION["email"]
     ])
 
     ?>
-    <form method="POST" action="../actions/add_subject.php">
-        <div class="flex flex-col justify-center items-center p-5">
 
-            <div class="flex flex-col">
-                <label for="subject_name">Asignatura</label>
-                <input type="text" id="subject_name" name="subject_name" required>
-            </div>
-            
-            <div class="flex flex-col">
-                <label for="teacher">Profesor</label>
-                <input type="text" id="teacher" name="teacher" required>
-            </div>
-    
-            <div class="flex flex-col">
-                <label for="n_hours">Número de horas</label>
-                <input type="text" id="n_hours" name="n_hours" required>
-            </div>
+        <header class="bg-repeat bg-cover border-t-2 border-blue-600 h-full" style="background-image: url('../resources/background.jpg');">
 
-            <div>
-                <label for="course">Curso</label>
-                <select name="course" id="course">
+            <form class="flex items-center justify-center" method="POST" action="../actions/add_subject.php">
+                
+                <div class="w-full md:max-w-md mt-6">
 
-                <?php
-                foreach($courses as $course) {
-                    
-                    echo '<option value="' . $course["idcourses"]. '">'. $course["course_name"] .'</option>';
-                    
+                    <div class="flex flex-col justify-center items-center p-5 bg-white shadow-2xl md:rounded-xl">
+                        <h2 class="text-xl text-center font-semibold text-gray-700 mb-2">
+                            Nueva asignatura
+                        </h2>
 
-                }
-                ?>
-                </select>
-            </div>
+                        <div class="flex flex-col">
+                            <input placeholder="Asignatura" class="rounded px-4 w-full py-1 bg-gray-200  border border-gray-400 mb-6 text-gray-700 placeholder-gray-700 focus:bg-white focus:outline-none" type="text" id="subject_name" name="subject_name" required>
+                        </div>
+
+                        <div class="flex flex-col">
+                            <input placeholder="Profesor" class="rounded px-4 w-full py-1 bg-gray-200  border border-gray-400 mb-6 text-gray-700 placeholder-gray-700 focus:bg-white focus:outline-none" type="text" id="teacher" name="teacher" required>
+                        </div>
+
+                        <div class="flex flex-col">
+                            <input placeholder="Horas" class="rounded px-4 w-full py-1 bg-gray-200  border border-gray-400 mb-6 text-gray-700 placeholder-gray-700 focus:bg-white focus:outline-none" type="text" id="n_hours" name="n_hours" required>
+                        </div>
+
+                        <div class="flex flex-col">
+                            <select placeholder="Nombre del curso" class="rounded px-4 w-full py-1 bg-gray-200  border border-gray-400 mb-6 text-gray-700 placeholder-gray-700 focus:bg-white focus:outline-none" name="course" id="course">
+
+                                <?php
+                                foreach ($courses as $course) {
+
+                                    echo '<option value="' . $course["idcourses"] . '">' . $course["course_name"] . '</option>';
+                                }
+                                ?>
+                            </select>
+                        </div>
 
 
 
-            <div>
-                <button type="submit">Añadir curso</button>
-            </div>
-        </div>
-
-    </form>
-
-</body>
+                        <div>
+                            <button class="bg-yellow-400 hover:bg-yellow-300 m-2 p-2 rounded text-gray-700" type="submit">Añadir asignatura</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </header>
+    </body>
 
 </html>
