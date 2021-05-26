@@ -36,16 +36,16 @@
                     <h2 class="inline-block bg-white m-2 p-2 text-xl text-gray-600">Estos son tus cursos</h2>
                 </div>
 
-                <div class="my-4 mx-2 sm:flex sm:flex-1 sm:flex-wrap sm:justify-center">
+                <div class="my-4 mx-2 sm:flex sm:flex-1 sm:flex-wrap sm:justify-center ">
                     <?php foreach ($courses as $course) {
                     ?>
-                        <div>
-                            <div class="grid grid-cols-1 p-2 border-8 shadow-xl border-black m-2 text-gray-700 bg-yellow-300">
+                        <div class="p-2">
+                            <div class="p-2 border-8 shadow-xl border-black m-2 text-gray-700 bg-yellow-300 sm:h-full sm:w-96">
                                 <p class="px-2 py-2 font-semibold text-center text-xl"><?php echo $course["course_name"] ?></p>
 
-                                <div class="grid grid-cols-1 sm:grid-cols-2">
+                                <div class="grid grid-cols-1 sm:grid-cols-3">
                                     <h2 class="font-semibold text-sm px-2 py-2">Descripcion</h2>
-                                    <p class="px-2 py-2"><?php echo $course["description"] ?></p>
+                                    <p class="px-2 py-2 max-w-sm text-gray-700 col-span-3"><?php echo $course["description"] ?></p>
                                 </div>
 
                                 <div class="grid grid-cols-1 sm:grid-cols-2">
@@ -93,7 +93,7 @@
         ?>
 
         <div class="fixed bottom-4 right-4 transform hover:scale-125">
-            <a href="forms/add_course.php" class="font-bold text-gray-700 shadow-xl bg-yellow-400 border-2 border-black rounded-full bg-white flex items-center justify-center font-mono h-16 w-16">
+            <a href="forms/add_course.php" class="font-bold text-gray-700 shadow-xl bg-yellow-400 border-2 border-gray-700 rounded-full bg-white flex items-center justify-center font-mono h-16 w-16">
                 <div class="material-icons-outlined">
                     add
                 </div>
