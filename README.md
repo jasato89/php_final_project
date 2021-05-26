@@ -23,5 +23,8 @@ Como librería adicional, se ha utilizado **Tailwind** para dar estilos a la web
 
 El entorno de desarrollo utilizado para este proyecto es muy sencillo: Visual Studio Code para todo lo relacionado con el desarrollo en php y MySQLWorkbench para la moderación y gestión de la base de datos.
 
+## Video presentación
+El enlace al video es el siguiente: https://drive.google.com/file/d/13I147VXC78Xqk3cPheOR-fVu04sbyf6V/view?usp=sharing
+
 
 
